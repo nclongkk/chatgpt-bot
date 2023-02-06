@@ -64,6 +64,13 @@ export class LarkService {
     ) {
       return;
     }
+    const messageId = data.event.message.message_id;
+    if (await this.redisHelperService.getKey(messageId)) return;
+    await this.redisHelperService.setKey(
+      messageId,
+      { received: true },
+      60 * 10,
+    );
 
     await this.replyMessage(data);
   }
