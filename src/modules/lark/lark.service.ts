@@ -58,6 +58,7 @@ export class LarkService {
   }
 
   async handleMessageReceive(data) {
+    console.log(data);
     if (
       data.event.message.chat_type === 'group' &&
       !this.checkIfBotIsMentioned(data)

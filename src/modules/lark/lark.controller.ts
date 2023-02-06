@@ -12,11 +12,12 @@ export class LarkController {
 
   @Post('webhook')
   async receiveWebhook(@Body() data) {
+    console.log(data);
     const LARK_BOT_ENCRYPT_KEY = this.configService.get('LARK_BOT_ENCRYPT_KEY');
     const cipher = new AESCipher(LARK_BOT_ENCRYPT_KEY);
     const event = JSON.parse(cipher.decrypt(data.encrypt));
     if (event.type === 'url_verification') {
-      return event
+      return event;
     }
 
     switch (event.header.event_type) {
