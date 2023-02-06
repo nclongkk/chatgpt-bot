@@ -15,6 +15,10 @@ export class LarkController {
     const LARK_BOT_ENCRYPT_KEY = this.configService.get('LARK_BOT_ENCRYPT_KEY');
     const cipher = new AESCipher(LARK_BOT_ENCRYPT_KEY);
     const event = JSON.parse(cipher.decrypt(data.encrypt));
+    if (event.type === 'url_verification') {
+      return event
+    }
+
     switch (event.header.event_type) {
       case 'im.message.receive_v1': {
         this.larkService
@@ -23,6 +27,5 @@ export class LarkController {
         break;
       }
     }
-    return cipher.decrypt(data.encrypt);
   }
 }

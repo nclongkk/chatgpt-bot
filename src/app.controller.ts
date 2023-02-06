@@ -12,12 +12,6 @@ export class AppController {
 
   @Get()
   async getHello() {
-    const { tenant_access_token } =
-      await this.larkApiService.getTenantAccessToken();
-    console.log(tenant_access_token);
-
-    const { groups } = await this.larkApiService.getGroups(tenant_access_token);
-    console.log(groups);
     return this.appService.getHello();
   }
 }
