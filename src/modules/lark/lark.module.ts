@@ -5,9 +5,10 @@ import { Module } from '@nestjs/common';
 import { LarkApiService } from './lark-api.service';
 import { LarkController } from './lark.controller';
 import { LarkService } from './lark.service';
+import { ChatAIModule } from '../gpt/chat-ai.module';
 
 @Module({
-  imports: [HttpModule, ConfigModule],
+  imports: [HttpModule, ConfigModule, ChatAIModule],
   providers: [LarkService, LarkApiService],
   controllers: [LarkController],
   exports: [LarkService, LarkApiService],

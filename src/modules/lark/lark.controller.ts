@@ -1,6 +1,5 @@
 import { ConfigService } from '@nestjs/config';
 import { Body, Post, Controller } from '@nestjs/common';
-import { LarkMessage } from './classes/LarkMessage';
 import { LarkService } from './lark.service';
 import { AESCipher } from './classes/AESCipher';
 
@@ -18,7 +17,9 @@ export class LarkController {
     const event = JSON.parse(cipher.decrypt(data.encrypt));
     switch (event.header.event_type) {
       case 'im.message.receive_v1': {
-        await this.larkService.handleMessageReceive(event);
+        this.larkService
+          .handleMessageReceive(event)
+          .catch((e) => console.log(e));
         break;
       }
     }

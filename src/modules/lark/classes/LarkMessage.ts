@@ -14,7 +14,7 @@ export class LarkMessage {
     return {
       msg_type: 'text',
       content: JSON.stringify({
-        text: "\n\nYou can reverse a string in JavaScript by using the reverse() method of the built-in String object.\n\nExample: \n\nlet str = 'Hello World';\nlet reversedStr = str.split('').reverse().join('');\n\nconsole.log(reversedStr); // Outputs: \"dlroW olleH\"",
+        text: this.content,
       }),
     };
   }
