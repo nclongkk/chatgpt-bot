@@ -48,7 +48,6 @@ export class LarkService {
   checkIfBotIsMentioned(data) {
     if (data.event.message.mentions) {
       for (const mention of data.event.message.mentions) {
-        console.log(mention.id.open_id);
         if (mention.id.open_id === this.configService.get('LARK_BOT_OPEN_ID')) {
           return true;
         }
@@ -58,7 +57,6 @@ export class LarkService {
   }
 
   async handleMessageReceive(data) {
-    console.log(data);
     if (
       data.event.message.chat_type === 'group' &&
       !this.checkIfBotIsMentioned(data)
