@@ -36,7 +36,10 @@ export class LarkService {
       text = text.replace(mentionKey, '');
     }
 
-    const aiResponseText = await this.chatAIService.createCompletions(text);
+    let aiResponseText = 'Tôi đang bận, xin hãy thử lại sau';
+    try {
+      aiResponseText = await this.chatAIService.createCompletions(text);
+    } catch (error) {}
 
     const message = new LarkMessage(aiResponseText, data.event.message.chat_id);
     message.root_id = data.event.message.message_id;
