@@ -16,7 +16,7 @@ export class LarkController {
     const cipher = new AESCipher(LARK_BOT_ENCRYPT_KEY);
     const event = JSON.parse(cipher.decrypt(data.encrypt));
     if (event.type === 'url_verification') {
-      return event;
+      return res.status(200).send(event);
     }
 
     switch (event.header.event_type) {
