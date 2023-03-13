@@ -37,9 +37,7 @@ export class LarkController {
   }
 
   @Get('send-new-vocabulary-to-author')
-  async sendNewVocabularyToAuthor(@Body() data, @Res() res) {
-    res.status(200).send();
-
-    return this.larkService.sendNewVocabularyToAuthor();
+  async sendNewVocabularyToAuthor(@Body() data) {
+    await this.larkService.sendNewVocabularyToAuthor();
   }
 }
