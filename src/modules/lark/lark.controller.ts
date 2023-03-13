@@ -1,7 +1,8 @@
 import { ConfigService } from '@nestjs/config';
-import { Body, Post, Controller, Res } from '@nestjs/common';
+import { Body, Post, Controller, Res, Get } from '@nestjs/common';
 import { LarkService } from './lark.service';
 import { AESCipher } from './classes/AESCipher';
+import { LarkMessage } from './classes/LarkMessage';
 
 @Controller('/lark')
 export class LarkController {
@@ -33,5 +34,12 @@ export class LarkController {
     }
 
     return res.status(200).send();
+  }
+
+  @Get('send-new-vocabulary-to-author')
+  async sendNewVocabularyToAuthor(@Body() data, @Res() res) {
+    res.status(200).send();
+
+    return this.larkService.sendNewVocabularyToAuthor();
   }
 }
