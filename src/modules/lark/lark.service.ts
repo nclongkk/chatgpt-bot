@@ -107,7 +107,7 @@ export class LarkService {
       aiResponseText = 'Lỗi';
     }
 
-    const chatIds = ['nclongkk@gmail.com', 'tuyentq.1997@gmail.com'];
+    const chatIds = ['nclongkk@gmail.com', 'tuyentq.1997@gmail.com', 'anhiri1234@gmail.com'];
 
     for (const chatId of chatIds) {
       const message = new LarkMessage(aiResponseText, chatId, 'text', 'email');
