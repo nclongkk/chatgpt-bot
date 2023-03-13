@@ -63,6 +63,9 @@ export class LarkApiService {
       headers: {
         Authorization: `Bearer ${tenantAccessToken}`,
       },
+      params: {
+        receive_id_type: message.receive_id_type,
+      },
       data: message.export(),
     });
     return data;

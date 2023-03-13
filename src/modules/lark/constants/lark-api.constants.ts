@@ -6,7 +6,7 @@ export const LARK_API_ENDPOINT = {
     process.env.LARK_API_URL +
     '/open-apis/auth/v3/tenant_access_token/internal/',
   GET_GROUPS: process.env.LARK_API_URL + '/open-apis/chat/v4/list',
-  SEND_MESSAGE: process.env.LARK_API_URL + '/open-apis/message/v4/send/',
+  SEND_MESSAGE: process.env.LARK_API_URL + '/open-apis/im/v1/messages',
   REPLY_MESSAGE: (messageId: string) =>
     process.env.LARK_API_URL + `/open-apis/im/v1/messages/${messageId}/reply/`,
 };

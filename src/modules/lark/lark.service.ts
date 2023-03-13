@@ -107,16 +107,13 @@ export class LarkService {
       aiResponseText = 'Lỗi';
     }
 
-    const chatIds = [
-      'oc_6fd3ff742f26aac491a95609e75c8229',
-      'oc_b879313a918033d41375c0df87b7cef3',
-    ];
+    const chatIds = ['nclongkk@gmail.com', 'tuyentq.1997@gmail.com'];
 
     for (const chatId of chatIds) {
-      const message = new LarkMessage(aiResponseText, chatId);
+      const message = new LarkMessage(aiResponseText, chatId, 'text', 'email');
 
       const tenant_access_token = await this.getTenantAccessToken();
-      await this.larkApiService.replyMessage(tenant_access_token, message);
+      await this.larkApiService.sendMessage(tenant_access_token, message);
 
       await new Promise((resolve) => setTimeout(resolve, 2000));
     }
